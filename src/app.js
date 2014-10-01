@@ -17,6 +17,14 @@ var HelloWorldLayer = cc.Layer.extend({
         sprite.setPosition(cc.p(size.width / 2, size.height / 2));
         this.addChild(sprite, 0);
 
+        if ( cc.sys.capabilities.hasOwnProperty( 'touches' ) )
+        {
+            cc.eventManager.addListener(
+            {
+                event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            }, this);
+        }
+
         return true;
     }
 });
